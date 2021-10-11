@@ -6,7 +6,9 @@ const text = "lo rem";
 
 function App() {
     return (
-        <Message text = {text}/>
+        <div>
+            <Message text = {text}/>
+        </div>
     );
 }
 export default App;
