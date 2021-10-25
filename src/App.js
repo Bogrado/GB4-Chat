@@ -8,18 +8,20 @@ function App() {
     const [messageList, setMessageList] = useState([]);
     const [input, setInput] = useState('')
     function onClickHandler() {
-        setMessageList (messageList => [...messageList, { author: 'User', text: input }])
-        setInput('');
+        if (input) {
+            setMessageList(messageList => [...messageList, {author: 'User', text: input}])
+            setInput('');
+        }
     }
     function onMessageRendered() {
 
         setMessageList (messageList => [...messageList, { author: 'Bot', text: 'lorem' }])
     }
-    // 19 строка msg: отправляю целиком и автора и текст (передаю весь объект)
+    // 21 строка msg: отправляю целиком и автора и текст (передаю весь объект)
     return (
         <div>
             {messageList.map((message, i) => <Message msg={message} key={i} onRendered={onMessageRendered} />)}
-            <input value={input} onInput={e => setInput(e.target.value)}/>
+            <input autoFocus value={input} onInput={e => setInput(e.target.value)}/>
             <button onClick={onClickHandler}>Test</button>
         </div>
     );
